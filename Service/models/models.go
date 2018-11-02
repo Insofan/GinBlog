@@ -19,8 +19,8 @@ var db *gorm.DB
 
 type Model struct {
 	Id          int `gorm:"primary_key" json:"id"`
-	CreateOn    int `json:"create_on"`
-	ModifiedOne int `json:"modified_one"`
+	CreatedOn    int `json:"created_on"`
+	ModifiedOn int `json:"modified_on"`
 }
 
 func init() {
