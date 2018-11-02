@@ -10,7 +10,7 @@ package routers
 import (
 	"GinBlog/Service/pkg/setting"
 	"github.com/gin-gonic/gin"
-	"net/http"
+	"GinBlog/Service/routers/api/v1"
 )
 
 func InitRouter() *gin.Engine {
@@ -22,10 +22,13 @@ func InitRouter() *gin.Engine {
 
 	gin.SetMode(setting.RunMode)
 
-	r.GET("/test", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "test",
-		})
-	})
+	apiv1 := r.Group("/api/v1")
+	{
+		apiv1.GET("/tags", v1.GetTags)
+		apiv1.POST("/tags", v1.AddTag)
+		apiv1.PUT("/tags/:id", v1.EditTag)
+		apiv1.DELETE("/tags/:id", v1.DeleteTag)
+
+	}
 	return r
 }

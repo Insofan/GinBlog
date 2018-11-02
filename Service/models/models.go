@@ -10,6 +10,7 @@ package models
 import (
 	"GinBlog/Service/pkg/setting"
 	"fmt"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
 )
@@ -30,12 +31,13 @@ func init() {
 
 	sec, err := setting.Cfg.GetSection("database")
 	if err != nil {
-		log.Fatalf(2, "Fail to get section 'database': %v", err)
+		log.Fatalf( "Fail to get section 'database': %v", err)
 	}
 
-	dbType = sec.Key("Type").String()
+	//此处必须大小写一致
+	dbType = sec.Key("TYPE").String()
 	dbName = sec.Key("NAME").String()
-	user = sec.Key("user").String()
+	user = sec.Key("USER").String()
 	password = sec.Key("PASSWORD").String()
 	host = sec.Key("HOST").String()
 	tablePrefix = sec.Key("TABLE_PREFIX").String()
@@ -43,7 +45,8 @@ func init() {
 	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local", user, password, host, dbName))
 
 	if err != nil {
-		log.Println(err)
+		//log.Println(err)
+		log.Fatalln(err)
 	}
 
 	//这里用了table prefix
@@ -55,7 +58,7 @@ func init() {
 
 	//SetMaxOpenConns用于设置最大打开的连接数
 	//SetMaxIdleConns用于设置闲置的连接数
-	db.DB().SetMaxIdleConns(100)
+	db.DB().SetMaxIdleConns(10)
 	db.DB().SetMaxOpenConns(100)
 
 }
