@@ -9,8 +9,8 @@ package routers
 
 import (
 	"GinBlog/Service/pkg/setting"
-	"github.com/gin-gonic/gin"
 	"GinBlog/Service/routers/api/v1"
+	"github.com/gin-gonic/gin"
 )
 
 func InitRouter() *gin.Engine {
@@ -29,6 +29,14 @@ func InitRouter() *gin.Engine {
 		apiv1.PUT("/tags/:id", v1.EditTag)
 		apiv1.DELETE("/tags/:id", v1.DeleteTag)
 
+		//article
+		//获取所有文章列表
+		apiv1.GET("/articles", v1.GetAritcles)
+		//获取指定文章
+		apiv1.GET("/articles/:id", v1.GetArticle)
+		apiv1.POST("/articles", v1.AddArticles)
+		apiv1.PUT("/articles/:id", v1.EditArticle)
+		apiv1.DELETE("/articles/:id", v1.DeleteArticle)
 	}
 	return r
 }
