@@ -7,6 +7,14 @@
 //
 package models
 
+import (
+	"github.com/Unknwon/com"
+	"github.com/astaxie/beego/validation"
+	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
+	"time"
+)
+
 type Tag struct {
 	Model
 
@@ -44,5 +52,38 @@ func AddTag(name string, state int, createdBy string) bool  {
 		CreatedBy: createdBy,
 	})
 	return true
+}
+
+func EditTag(c *gin.Context)  {
+	id := com.StrTo(c.Param("id")).MustInt()
+	name := c.Query("name")
+	modifiedBy := c.Query("modified_by")
+
+	valid := validation.Validation{}
+
+	var state int = -1
+	if arg := c.Query("state"); arg != "" {
+		state = com.StrTo(arg).MustInt()
+		valid.Range(state, 0, 1, "state").Message("状态只允许0或1")
+	}
+
+	valid.Required(id, "id").Message("ID不能为空")
+}
+
+//这是gorm自带的callback, gorm支持的回调方法
+/*
+	创建：BeforeSave、BeforeCreate、AfterCreate、AfterSave
+	更新：BeforeSave、BeforeUpdate、AfterUpdate、AfterSave
+	删除：BeforeDelete、AfterDelete
+	查询：AfterFind
+ */
+func (tag *Tag)BeforeCreate(scope *gorm.Scope) error  {
+	scope.SetColumn("CreatedOn", time.Now().Unix())
+	return nil
+}
+
+func (tag *Tag)BeforeUpdate(scope *gorm.Scope) error  {
+	scope.SetColumn("ModifiedOn", time.Now().Unix())
+	return nil
 }
 
