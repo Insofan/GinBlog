@@ -1,6 +1,6 @@
 //
 //  tag.go
-//  Service 
+//  Service
 //
 //  Created by Inso on 2018/11/2.
 //  Copyright © 2018 Inso. All rights reserved.
@@ -8,15 +8,15 @@
 package v1
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/Unknwon/com"
-	"GinBlog/Service/pkg/e"
 	"GinBlog/Service/models"
-	"GinBlog/Service/pkg/util"
+	"GinBlog/Service/pkg/e"
 	"GinBlog/Service/pkg/setting"
-	"net/http"
-	"github.com/astaxie/beego/validation"
+	"GinBlog/Service/pkg/util"
 	"fmt"
+	"github.com/Unknwon/com"
+	"github.com/astaxie/beego/validation"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func GetTags(c *gin.Context) {
@@ -62,7 +62,7 @@ func AddTag(c *gin.Context) {
 
 	code := e.INVALID_PARAMS
 	if !valid.HasErrors() {
-		if !models.ExistTagByName(name)	 {
+		if !models.ExistTagByName(name) {
 			code = e.SUCCESS
 			models.AddTag(name, state, createdBy)
 		} else {
@@ -71,18 +71,88 @@ func AddTag(c *gin.Context) {
 	} else {
 		for _, err := range valid.Errors {
 			//logging.Info(err.Key, err.Message)
-			fmt.Println("Info: key " + err.Key+ " msg "+ err.Message)
+			fmt.Println("Info: key " + err.Key + " msg " + err.Message)
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,
-		"msg" : e.GetMsg(code),
+		"msg":  e.GetMsg(code),
 		"data": make(map[string]string),
 	})
 }
+
 func EditTag(c *gin.Context) {
+	id := com.StrTo(c.Param("id")).MustInt()
+	name := c.Query("name")
+	modifiedBy := c.Query("modified_by")
 
+	valid := validation.Validation{}
+
+	var state int = -1
+	if arg := c.Query("state"); arg != "" {
+		state = com.StrTo(arg).MustInt()
+		valid.Range(state, 0, 1, "state").Message("状态只允许0或1")
+	}
+	//可以把这些记录到loggin里面
+	valid.Required(id, "id").Message("ID不能为空")
+	valid.Required(modifiedBy, "modified_by").Message("修改人不能为空")
+	valid.MaxSize(modifiedBy, 100, "modified_by").Message("修改人最长为100字符")
+	valid.MaxSize(name, 100, "name").Message("名称最长为100字符")
+
+	code := e.INVALID_PARAMS
+	if !valid.HasErrors() {
+		code = e.SUCCESS
+		if models.ExistTagById(id) {
+			data := make(map[string]interface{})
+			data["modified_by"] = modifiedBy
+			if name != "" {
+				data["name"] = name
+			}
+
+			if state != -1 {
+				data["state"] = state
+			}
+			models.EditTag(id, data)
+		} else {
+			code = e.ERROR_NOT_EXIST_TAG
+		}
+	} else {
+		for _, err := range valid.Errors {
+			fmt.Println(err.Key, err.Message)
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": make(map[string]string),
+	})
 }
-func DeleteTag(c *gin.Context) {
 
+func DeleteTag(c *gin.Context) {
+	id := com.StrTo(c.Param("id")).MustInt()
+
+	valid := validation.Validation{}
+	valid.Min(id, 1, "id").Message("ID必须大于0")
+
+	code := e.INVALID_PARAMS
+
+	if !valid.HasErrors() {
+		code = e.SUCCESS
+		if models.ExistTagById(id) {
+			models.DeleteTag(id)
+		} else {
+			code = e.ERROR_NOT_EXIST_TAG
+		}
+	} else {
+		for _, err := range valid.Errors {
+			fmt.Println(err.Key, err.Message)
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": make(map[string]string),
+	})
 }
