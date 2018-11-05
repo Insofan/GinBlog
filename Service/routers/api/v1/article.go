@@ -13,11 +13,11 @@ import (
 	"GinBlog/Service/pkg/e"
 	"GinBlog/Service/pkg/setting"
 	"GinBlog/Service/pkg/util"
-	"fmt"
 	"github.com/Unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"GinBlog/Service/pkg/logging"
 )
 
 /**
@@ -46,7 +46,7 @@ func GetArticle(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
@@ -94,7 +94,7 @@ func GetAritcles(c *gin.Context) {
 	} else {
 		for _, err := range valid.Errors {
 			//logging.Info(err.Key, err.Message)
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
@@ -148,7 +148,7 @@ func AddArticles(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
@@ -221,7 +221,7 @@ func EditArticle(c *gin.Context) {
 	} else {
 		for _, err := range valid.Errors {
 			//		logging.Info(err.Key, err.Message)
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
@@ -256,7 +256,7 @@ func DeleteArticle(c *gin.Context) {
 	} else {
 		for _, err := range valid.Errors {
 			//logging.Info(err.Key, err.Message)
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 

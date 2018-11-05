@@ -1,0 +1,2 @@
+[INFO][article.go:98]2018/11/05 17:25:29 [state 状态只允许0或1]
+[INFO][article.go:98]2018/11/05 17:25:29 [tag_id 标签ID必须大于0]

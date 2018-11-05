@@ -12,11 +12,11 @@ import (
 	"GinBlog/Service/pkg/e"
 	"GinBlog/Service/pkg/setting"
 	"GinBlog/Service/pkg/util"
-	"fmt"
 	"github.com/Unknwon/com"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"GinBlog/Service/pkg/logging"
 )
 
 func GetTags(c *gin.Context) {
@@ -71,7 +71,7 @@ func AddTag(c *gin.Context) {
 	} else {
 		for _, err := range valid.Errors {
 			//logging.Info(err.Key, err.Message)
-			fmt.Println("Info: key " + err.Key + " msg " + err.Message)
+			logging.Info("Info: key " + err.Key + " msg " + err.Message)
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
@@ -118,7 +118,7 @@ func EditTag(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
@@ -146,7 +146,7 @@ func DeleteTag(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			fmt.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 
