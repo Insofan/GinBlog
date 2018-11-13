@@ -12,9 +12,21 @@ import (
 	"GinBlog/Service/pkg/setting"
 	"GinBlog/Service/routers/api"
 	"GinBlog/Service/routers/api/v1"
+	_ "GinBlog/Service/docs"
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
+// @title Gin Blog 测试Swag
+// @version 1.0
+// @description 测试用Swag.
+
+// @contact.name Insomnia
+// @contact.email insofan3156@gmail.com
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 func InitRouter() *gin.Engine {
 	r := gin.New()
 
@@ -25,7 +37,7 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(setting.RunMode)
 
 	r.GET("/auth", api.GetAuth)
-
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	apiv1 := r.Group("/api/v1")
 
 	apiv1.Use(jwt.JWT())

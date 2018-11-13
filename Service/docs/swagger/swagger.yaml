@@ -7,7 +7,47 @@ info:
   title: '{{.Title}}'
   version: '{{.Version}}'
 paths:
+  /api/v1/articles:
+    get:
+      parameters:
+      - description: TagId
+        in: query
+        name: tag_id
+        required: true
+        type: integer
+      - description: State
+        in: query
+        name: state
+        type: integer
+      - description: Token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"lists": [],"total": 0},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 获取所有文章
   /api/v1/tags:
+    get:
+      parameters:
+      - description: Token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{lists[],total},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 获取所有标签
     post:
       parameters:
       - description: Name
@@ -22,7 +62,12 @@ paths:
       - description: CreatedBy
         in: query
         name: created_by
-        type: integer
+        type: string
+      - description: Token
+        in: query
+        name: token
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -31,4 +76,53 @@ paths:
           schema:
             type: string
       summary: 新增文章标签
+    put:
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: State
+        in: query
+        name: state
+        type: integer
+      - description: ModifiedBy
+        in: query
+        name: modified_by
+        type: string
+      - description: Token
+        in: query
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            type: string
+      summary: 编辑文章标签
+  /auth:
+    get:
+      parameters:
+      - description: UserName
+        in: query
+        name: username
+        required: true
+        type: string
+      - description: Password
+        in: query
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"token": },"msg":"ok"}'
+          schema:
+            type: string
+      summary: 获取Token
 swagger: "2.0"

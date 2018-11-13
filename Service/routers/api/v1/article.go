@@ -57,13 +57,13 @@ func GetArticle(c *gin.Context) {
 	})
 }
 
-/**
-*@Description: 获取所有文章
-*@Param:
-*@return:
-*@Author: Insomnia
-*@date: 18-11-3
- */
+// @Summary 获取所有文章
+// @Produce  json
+// @Param tag_id query int true "TagId"
+// @Param state query int false "State"
+// @Param token query string true "Token"
+// @Success 200 {string} json "{"code":200,"data":{"lists": [],"total": 0},"msg":"ok"}"
+// @Router /api/v1/articles [get]
 func GetAritcles(c *gin.Context) {
 	data := make(map[string]interface{})
 	maps := make(map[string]interface{})
