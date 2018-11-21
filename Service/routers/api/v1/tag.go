@@ -88,19 +88,19 @@ func AddTag(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,
-		"msg":  e.GetMsg(code),
+		"msg":  e.GetMsg(code),Summary 编辑文章标签
+		// @Produce  json
+		// @Param name query string true "Name"
+		// @Param state query int false "State"
+		// @Param modified_by query string false "ModifiedBy"
+		// @Param token query string true "Token"
+		// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+		// @Router /api/v1/tags [put]
 		"data": make(map[string]string),
 	})
 }
 
-// @Summary 编辑文章标签
-// @Produce  json
-// @Param name query string true "Name"
-// @Param state query int false "State"
-// @Param modified_by query string false "ModifiedBy"
-// @Param token query string true "Token"
-// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
-// @Router /api/v1/tags [put]
+// @
 func EditTag(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 	name := c.Query("name")
