@@ -8,19 +8,41 @@
 package main
 
 import (
+	"GinBlog/Service/models"
 	"GinBlog/Service/pkg/setting"
 	"GinBlog/Service/routers"
+	"context"
 	"fmt"
-	"net/http"
+	"github.com/robfig/cron"
 	"log"
+	"net/http"
 	"os"
 	"os/signal"
-	"context"
 	"time"
-
 )
 
 func main() {
+	log.Println("Starting...")
+	c := cron.New()
+	c.AddFunc("* * * * *", func() {
+		log.Println("Run models.CleanAllTag...")
+		models.CleanAllTag()
+	})
+	c.AddFunc("* * * * *", func() {
+		log.Println("Run models.CleanAllArticle...")
+		models.CleanAllArticle()
+	})
+	c.Start()
+
+	t1 := time.NewTimer(time.Second * 100)
+
+	for {
+		select {
+			case <-t1.C:
+				t1.Reset(time.Second * 100)
+		}
+	}
+
 	router := routers.InitRouter()
 	s := &http.Server{
 		Addr:           fmt.Sprintf(":%d", setting.HTTPPort),

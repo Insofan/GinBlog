@@ -158,3 +158,9 @@ func (article *Article) BeforeUpdate(scope *gorm.Scope) error {
 	scope.SetColumn("ModifiedOn", time.Now().Unix())
 	return nil
 }
+
+func CleanAllArticle() bool {
+	// 硬删除用 unscoped
+	db.Unscoped().Where("deleted_on != ? ", 0).Delete(&Article{})
+	return true
+}
