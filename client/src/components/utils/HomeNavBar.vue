@@ -55,7 +55,7 @@ export default {
       @include flex-row-center;
       @include title-font;
       color: white;
-      font-size: 420%;
+      font-size: 52px;
       font-weight: bold;
       overflow: hidden;
     }

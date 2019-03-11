@@ -1,10 +1,10 @@
 <template>
   <Layout>
-    <Header class="header">
+    <Header class="header-bg">
       <home-nav-bar></home-nav-bar>
     </Header>
-    <Content>Content</Content>
-    <Footer>Footer</Footer>
+    <Content class="content-bg">Content</Content>
+    <Footer class="footer-bg">Footer</Footer>
   </Layout>
 </template>
 
@@ -17,8 +17,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .header {
+  .header-bg {
     background: $light-primary-color;
   }
-
+  .content-bg {
+    padding-left: 64px;
+    padding-right: 64px;
+    min-height: 600px;
+  }
+  .footer-bg {
+    background: $dark-primary-color;
+    color: $title-color;
+  }
 </style>
