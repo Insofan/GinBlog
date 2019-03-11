@@ -122,7 +122,7 @@ a {
     .test-1 {
         height: 100px;
         width: 100px;
-        background: $test2;
+        background: $primary-color;
     }
 }
 </style>

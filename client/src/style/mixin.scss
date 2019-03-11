@@ -1,1 +1,45 @@
-$test2: #b1feff;
+//Font
+@mixin title-font{
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(70, 76, 91);
+}
+
+@mixin mid-title-font {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(70, 76, 91);
+}
+
+@mixin min-title-font {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(70, 76, 91);
+}
+
+@mixin content-font {
+  font-size: 12px;
+  font-weight: bold;
+  color: rgb(70, 76, 91);
+}
+
+@mixin sub-content-font {
+  color: rgb(195, 203, 214);
+}
+
+@mixin disabled-font {
+  color: rgb(195, 203, 214);
+}
+
+@mixin link-font {
+  color: #2d8cf0;
+  background: 0 0;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+  transition: color .2s ease;
+  :hover {
+    color: #57a3f3;
+  }
+}
+
