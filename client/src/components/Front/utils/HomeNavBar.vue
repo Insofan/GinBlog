@@ -3,7 +3,9 @@
   <Layout>
     <Row class="nav-bg">
       <Col span="12">
-        <div class="nav-title-label">Insomnia's World</div>
+        <router-link to="/">
+          <div class="nav-title-label">Insomnia's World</div>
+        </router-link>
       </Col>
       <Col span="8">
         <Menu mode="horizontal" style="background: #2d8cf0" class="menu">

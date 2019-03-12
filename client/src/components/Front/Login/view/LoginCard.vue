@@ -8,7 +8,10 @@
       密码
     </div>
     <Input class="password-input" v-model="value" placeholder="密码..." style="width: 300px" />
-    <Button type="primary" class="login-button">登录</Button>
+    <div class="button-bg">
+      <Button type="primary" class="button">登录</Button>
+      <Button type="warning" class="button" to="/">首页</Button>
+    </div>
   </div>
 </template>
 
@@ -42,10 +45,14 @@ export default {
     .password-input {
       margin-top: 25px;
     }
-    .login-button {
+    .button-bg {
       margin-top: 25px;
-      width: 100px;
-      height: 40px;
+      .button {
+        width: 90px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
     }
+
   }
 </style>
