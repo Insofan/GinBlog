@@ -8,7 +8,7 @@
         </router-link>
       </Col>
       <Col span="8">
-        <Menu mode="horizontal" style="background: #2d8cf0" class="menu">
+        <Menu mode="horizontal" style="background: #2d8cf0;min-width: 800px" class="menu">
           <MenuItem name="1" class="menu-item">
             <Icon type="ios-paper"/>
             内容管理
