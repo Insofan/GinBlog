@@ -1,43 +1,36 @@
 <template>
 	<v-app>
-		<v-navigation-drawer
-				v-model="drawer"
-				fixed
-				app
-		>
-		</v-navigation-drawer>
+		<home-nav-bar></home-nav-bar>
+		<v-content>
+			<v-container>
+
+			</v-container>
+		</v-content>
+		<home-footer-bar></home-footer-bar>
 	</v-app>
-  <!--<Layout>-->
-    <!--<div class="layout">-->
-      <!--<Header class="header-bg">-->
-        <!--<home-nav-bar></home-nav-bar>-->
-      <!--</Header>-->
-      <!--<Content class="content-bg">Content</Content>-->
-      <!--<Footer class="footer-bg">-->
-        <!--<div>-->
-          <!--Footer-->
-        <!--</div>-->
-      <!--</Footer>-->
-    <!--</div>-->
-  <!--</Layout>-->
 </template>
 
 <script>
-import HomeNavBar from '../utils/HomeNavBar'
-import {VApp,
-	VIcon,
-	VCard,
-	VNavigationDrawer,
-} from 'vuetify/lib'
-export default {
+	import HomeNavBar from '../utils/HomeNavBar'
+	import HomeFooterBar from "../utils/HomeFooterBar";
+	import {
+		VApp,
+		VFooter,
+		VContent,
+		VContainer
+	} from 'vuetify/lib'
+
+	export default {
   name: 'HomeController',
   components: {
+	  HomeFooterBar,
 	  HomeNavBar,
 	  VApp,
-	  VIcon,
-	  VCard,
-	  VNavigationDrawer
-  }
+	  VContent,
+	  VContainer,
+	  VFooter
+  },
+
 }
 </script>
 
