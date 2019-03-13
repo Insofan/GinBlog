@@ -1,18 +1,20 @@
 <template>
-  <Layout>
+	<v-app>
     <div class="login-bg">
       <div>
         <login-card></login-card>
       </div>
     </div>
-  </Layout>
+	</v-app>
 </template>
 
 <script>
 import LoginCard from './view/LoginCard'
+import {VApp} from 'vuetify/lib'
 export default {
   name: 'LoginController',
-  components: {LoginCard}
+  components: {LoginCard,
+  VApp}
 }
 </script>
 

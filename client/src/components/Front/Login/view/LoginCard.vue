@@ -1,23 +1,36 @@
 <template>
+
   <div class="card-bg">
-    <div class="username-label">
-      用户名
-    </div>
-    <Input class="username-input" v-model="value" placeholder="用户名..." style="width: 300px" />
-    <div class="password-label">
-      密码
-    </div>
-    <Input class="password-input" v-model="value" placeholder="密码..." style="width: 300px" />
+	  <v-icon color="#c5c8ce" size="80">account_circle</v-icon>
+	  <v-text-field class="input"
+			  label="用户名"
+			  style="width: 260px"
+	  ></v-text-field>
+	  <v-text-field class="input"
+			  label="密码"
+			  style="width: 260px"
+	  ></v-text-field>
     <div class="button-bg">
-      <Button type="primary" class="button">登录</Button>
-      <Button type="warning" class="button" to="/">首页</Button>
+	    <v-btn color="primary" class="button">登录</v-btn>
+	    <v-btn color="secondary" to="/" >返回</v-btn>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'LoginCard'
+	import {
+		VIcon,
+		VTextField,
+			VBtn,
+	} from 'vuetify/lib'
+
+	export default {
+		name: 'LoginCard',
+		components: {
+			VIcon,
+			VTextField,
+			VBtn,
+	},
 }
 </script>
 
@@ -30,21 +43,10 @@ export default {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     padding: 50px;
 
-    .username-label {
-      @include title-font;
-      align-self: flex-start;
-    }
-    .username-input {
+    .input {
       margin-top: 25px;
     }
-    .password-label {
-      margin-top: 25px;
-      @include title-font;
-      align-self: flex-start;
-    }
-    .password-input {
-      margin-top: 25px;
-    }
+
     .button-bg {
       margin-top: 25px;
       .button {
