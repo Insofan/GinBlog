@@ -6,7 +6,7 @@
 			  app
 	  >
 		  <v-list dense>
-			  <v-list-tile @click="">
+			  <v-list-tile @click="" to="/">
 				  <v-list-tile-action>
 					  <v-icon>home</v-icon>
 				  </v-list-tile-action>
@@ -14,12 +14,14 @@
 					  <v-list-tile-title>Home</v-list-tile-title>
 				  </v-list-tile-content>
 			  </v-list-tile>
-			  <v-list-tile @click="">
+			  <v-list-tile @click="" to="login">
 				  <v-list-tile-action>
-					  <v-icon>contact_mail</v-icon>
+					  <v-icon>account_box</v-icon>
 				  </v-list-tile-action>
 				  <v-list-tile-content>
-					  <v-list-tile-title>Contact</v-list-tile-title>
+					  <v-list-tile-title>
+							  登录
+					  </v-list-tile-title>
 				  </v-list-tile-content>
 			  </v-list-tile>
 		  </v-list>

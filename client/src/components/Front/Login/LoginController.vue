@@ -20,6 +20,6 @@ export default {
   .login-bg {
       @include flex-row-center;
       height: 100vh;
-      background: linear-gradient(0deg, white 50%, $info-color 50%);
+      background: linear-gradient(0deg, white 50%, $primary-color 50%);
   }
 </style>
