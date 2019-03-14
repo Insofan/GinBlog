@@ -1,15 +1,17 @@
-//
-//  main.go
-//  service 
-//
-//  Created by Inso on 2019/3/12.
-//  Copyright © 2019 Inso. All rights reserved.
-//
+/**
+ * Created with Goland.
+ * Description: 
+ * User: Insomnia
+ * Date: 2019-03-14
+ * Time: 下午9:07
+ */
+/*
+	Package main the service entry
+*/
 package main
 
 import "fmt"
 
 func main() {
-	fmt.Printf("he\n")
-
+	fmt.Println("Hello world!")
 }
