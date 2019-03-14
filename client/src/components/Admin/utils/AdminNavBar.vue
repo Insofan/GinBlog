@@ -22,13 +22,11 @@
 			</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<v-layout row align-center style="max-width: 350px">
-				<v-text-field class="search-text-field"
-				              :append-icon-cb="() => {}"
+				<v-text-field class="search-text-field  lighten-1"
 				              placeholder="搜索..."
 				              single-line
 				              append-icon="search"
 				              color="white"
-				              style="color: white"
 				              hide-details
 				></v-text-field>
 			</v-layout>

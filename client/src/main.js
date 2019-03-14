@@ -5,8 +5,6 @@ import App from './App'
 import router from './router'
 
 import 'normalize.css'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
 
 import Vuetify from 'vuetify/lib'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
@@ -23,7 +21,6 @@ Vue.use(Vuetify, {
 	}
 })
 
-Vue.use(iView)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
