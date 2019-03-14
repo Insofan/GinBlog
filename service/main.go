@@ -10,8 +10,15 @@
 */
 package main
 
-import "fmt"
+import (
+	"GinBlog/service/pkg/setting"
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Hello world!")
+	s := setting.LoadServer()
+	if s != nil {
+		fmt.Println("wtf")
+	}
 }
