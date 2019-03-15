@@ -29,13 +29,13 @@
 			VFlex
 	} from 'vuetify/lib'
 	export default {
-		name: "HomeFooterBar",
+		name: 'HomeFooterBar',
 		components: {
 			VApp,
 			VFooter,
 			VLayout,
 			VFlex
-		},
+		}
 	}
 </script>
 

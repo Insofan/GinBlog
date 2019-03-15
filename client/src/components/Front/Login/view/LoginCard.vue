@@ -21,7 +21,7 @@
 	import {
 		VIcon,
 		VTextField,
-			VBtn,
+		VBtn
 	} from 'vuetify/lib'
 
 	export default {
@@ -29,8 +29,8 @@
 		components: {
 			VIcon,
 			VTextField,
-			VBtn,
-	},
+			VBtn
+	}
 }
 </script>
 

@@ -12,7 +12,7 @@
 
 <script>
 	import HomeNavBar from '../utils/HomeNavBar'
-	import HomeFooterBar from "../utils/HomeFooterBar";
+	import HomeFooterBar from '../utils/HomeFooterBar';
 	import {
 		VApp,
 		VFooter,
@@ -29,8 +29,7 @@
 	  VContent,
 	  VContainer,
 	  VFooter
-  },
-
+  }
 }
 </script>
 

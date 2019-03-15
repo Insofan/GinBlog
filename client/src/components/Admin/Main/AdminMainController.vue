@@ -15,21 +15,20 @@
 		VContent,
 		VContainer
 	} from 'vuetify/lib'
-	import AdminNavBar from "../utils/AdminNavBar";
+	import AdminNavBar from '../utils/AdminNavBar';
 	export default {
-		name: "AdminMainController",
+		name: 'AdminMainController',
 		components: {
 			VApp,
 			VContent,
 			VContainer,
-
-			AdminNavBar,
+			AdminNavBar
 		},
 		data() {
 			return {
-				isDrawer: false,
+				isDrawer: false
 			}
-		},
+		}
 	}
 </script>
 

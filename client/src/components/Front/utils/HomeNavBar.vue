@@ -6,7 +6,8 @@
 			  app
 	  >
 		  <v-list dense>
-			  <v-list-tile @click="" to="/">
+			  <!--v-on:click=""-->
+			  <v-list-tile to="/">
 				  <v-list-tile-action>
 					  <v-icon>home</v-icon>
 				  </v-list-tile-action>
@@ -14,7 +15,8 @@
 					  <v-list-tile-title>Home</v-list-tile-title>
 				  </v-list-tile-content>
 			  </v-list-tile>
-			  <v-list-tile @click="" to="login">
+			  <!--v-on:click=""-->
+			  <v-list-tile to="login">
 				  <v-list-tile-action>
 					  <v-icon>account_box</v-icon>
 				  </v-list-tile-action>
@@ -48,7 +50,7 @@
 		VNavigationDrawer,
 		VToolbar,
 		VToolbarTitle,
-		VToolbarSideIcon,
+		VToolbarSideIcon
 	} from 'vuetify/lib'
 export default {
   name: 'HomeNavBar',
@@ -63,13 +65,13 @@ export default {
 		VListTile,
 		VListTileAction,
 		VListTileContent,
-		VListTileTitle,
+		VListTileTitle
 	},
 	data() {
 		return {
-			isDrawer: false,
+			isDrawer: false
 		}
-	},
+	}
 }
 </script>
 

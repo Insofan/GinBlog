@@ -48,12 +48,12 @@
 		VToolbarTitle,
 		VToolbarSideIcon,
 		VTextField,
-			VLayout,
-			VSpacer,
+		VLayout,
+		VSpacer
 	} from 'vuetify/lib'
 
 	export default {
-		name: "AdminNavBar",
+		name: 'AdminNavBar',
 		components: {
 			VApp,
 			VIcon,
@@ -68,13 +68,13 @@
 			VListTileTitle,
 			VTextField,
 			VLayout,
-			VSpacer,
+			VSpacer
 		},
 		data() {
 			return {
-				isDrawer: false,
+				isDrawer: false
 			}
-		},
+		}
 	}
 </script>
 
